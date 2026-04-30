@@ -19,6 +19,7 @@ namespace FlowControl
                 Console.WriteLine("------Main Menu------");
                 Console.WriteLine("Skriv 1 för att köpa en biobiljett");
                 Console.WriteLine("Skriv 2 för att köpa flera biobiljetter");
+                Console.WriteLine("Skriv 3 och mata sedan in en text");
                 Console.WriteLine("Skriv 0 för att stänga ner");
                 input = Console.ReadLine();
 
@@ -48,6 +49,11 @@ namespace FlowControl
                         result = int.Parse(amount);
                         Receipt(result);
                         break;
+                    case "3":
+                        Console.WriteLine("Skriv något här och se vad som händer!");
+                        input = Console.ReadLine();
+                        Console.WriteLine(RepeatTenTimes(input));
+                        break;
                     default:
                         Console.WriteLine("Fel input!");
                         break;
@@ -63,8 +69,7 @@ namespace FlowControl
             if(check < 20)
             {
                 youth++;
-                return 80;                   
-                
+                return 80;                      
             }
             else if(check > 64)
             {
@@ -123,28 +128,45 @@ namespace FlowControl
         static void Receipt(int amount)
         {
             int sum = AmountOfTickets(amount);
-            int[] checkPeople = {youth, middleage, pensioner};
-            for (int i = 0; i < checkPeople.Length; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if(youth != 0)
                 {
-                    Console.WriteLine($"{youth}: Ungdomar");    
+                    if(youth < 2)
+                        Console.WriteLine($"{youth}: Ungdom");
+                    else
+                        Console.WriteLine($"{youth}: Ungdomar");
                     youth = 0;
                 }
                 else if(middleage != 0)
                 {
-                    Console.WriteLine($"{middleage}: Vuxna");    
+                    if(middleage < 2)
+                        Console.WriteLine($"{middleage}: Vuxen");
+                    else
+                        Console.WriteLine($"{middleage}: Vuxna");
                     middleage = 0;                  
                 }
                 else if(pensioner != 0)
                 {
-                    Console.WriteLine($"{pensioner}: Pensionärer");
+                    if(pensioner < 2)
+                        Console.WriteLine($"{pensioner}: Pensionär");
+                    else
+                        Console.WriteLine($"{pensioner}: Pensionärer");
                     pensioner = 0;
-                    
                 }
             }
             Console.WriteLine($"Totalsumma: {sum}kr");
 
+        }
+
+        static string RepeatTenTimes(string repeat)
+        {
+            string sum = "";
+            for (int i = 1; i < 11; i++)
+            {
+                sum += $"{i}." + repeat + " ";
+            }
+            return sum;
         }
     }
 
