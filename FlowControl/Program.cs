@@ -5,12 +5,14 @@ namespace FlowControl
 {
     class Program
     {    
+        //Globara variablar som används för ålder och vilken ålder
         static string age = "";
         static int youth = 0;
         static int middleage = 0;
         static int pensioner = 0;
         static void Main(string[] args)
         {
+            //Variablar som hanterar inputs för de olika metoderna i switch case satsen
             string? input = "";
             string? amount = "";
             int result = 0;
@@ -20,6 +22,7 @@ namespace FlowControl
                 Console.WriteLine("Skriv 1 för att köpa en biobiljett");
                 Console.WriteLine("Skriv 2 för att köpa flera biobiljetter");
                 Console.WriteLine("Skriv 3 och mata sedan in en text");
+                Console.WriteLine("Skriv 4 mata in en mening på minst 3 ord");
                 Console.WriteLine("Skriv 0 för att stänga ner");
                 input = Console.ReadLine();
 
@@ -47,12 +50,22 @@ namespace FlowControl
                             amount = Console.ReadLine();
                         }
                         result = int.Parse(amount);
-                        Receipt(result);
+                        Console.WriteLine(Receipt(result));
                         break;
                     case "3":
                         Console.WriteLine("Skriv något här och se vad som händer!");
                         input = Console.ReadLine();
                         Console.WriteLine(RepeatTenTimes(input));
+                        break;
+                    case "4":
+                        Console.WriteLine("Skriv en mening på minst 3 ord!");
+                        input = Console.ReadLine();
+                        while (input.Split(' ').Count() !<= 2)
+                        {
+                            Console.WriteLine("Meningen måste innehålla minst 3 ord");
+                            input = Console.ReadLine();
+                        }
+                        Console.WriteLine(TheThirdWord(input));
                         break;
                     default:
                         Console.WriteLine("Fel input!");
@@ -63,6 +76,8 @@ namespace FlowControl
 
 
         }
+        //Metod som kollar priset beroende på ålder
+        //Samt adderar till youth/pensioner/middleage för att sedan kunna skriva ut det på ett kvitto
         static int CheckAge(string age)
         {
             int check = int.Parse(age);
@@ -82,7 +97,7 @@ namespace FlowControl
                 return 120;               
             }
         }
-
+        //Metod för att räkna priset på mängden biljetter som köps och ber om varjes persons ålder
         static int AmountOfTickets(int amount)
         {
             int sum = 0;
@@ -100,7 +115,7 @@ namespace FlowControl
 
             return sum;
         }
-
+        //Skriver ut ett kvitto på köpet för en person
         static string Receipt(string age)
         {
             int checkType = CheckAge(age);
@@ -124,41 +139,42 @@ namespace FlowControl
                 return "Inget köp gjort";          
             }
         }
-
-        static void Receipt(int amount)
+        //Skriver ut ett kvitto på ett fler köp
+        static string Receipt(int amount)
         {
             int sum = AmountOfTickets(amount);
+            string totalPersons = "";
             for (int i = 0; i < 3; i++)
             {
                 if(youth != 0)
                 {
                     if(youth < 2)
-                        Console.WriteLine($"{youth}: Ungdom");
+                        totalPersons += $"{youth}: Ungdom\n";
                     else
-                        Console.WriteLine($"{youth}: Ungdomar");
+                        totalPersons += $"{youth}: Ungdomar\n";
                     youth = 0;
                 }
                 else if(middleage != 0)
                 {
                     if(middleage < 2)
-                        Console.WriteLine($"{middleage}: Vuxen");
+                        totalPersons += $"{middleage}: Vuxen\n";
                     else
-                        Console.WriteLine($"{middleage}: Vuxna");
-                    middleage = 0;                  
+                        totalPersons += $"{middleage}: Vuxna\n";
+                    middleage = 0;              
                 }
                 else if(pensioner != 0)
                 {
                     if(pensioner < 2)
-                        Console.WriteLine($"{pensioner}: Pensionär");
+                        totalPersons += $"{pensioner}: Pensionär\n";
                     else
-                        Console.WriteLine($"{pensioner}: Pensionärer");
+                        totalPersons += $"{pensioner}: Pensionärer\n";
                     pensioner = 0;
                 }
             }
-            Console.WriteLine($"Totalsumma: {sum}kr");
+            return $"Antal personer: \n{totalPersons}Totalsumma: {sum}kr";
 
         }
-
+        //Repeterar en mening tio gånger
         static string RepeatTenTimes(string repeat)
         {
             string sum = "";
@@ -167,6 +183,15 @@ namespace FlowControl
                 sum += $"{i}." + repeat + " ";
             }
             return sum;
+        }
+        //Tar in en mening på 3 ord eller mer sedan splitar meningen och skickar tillbaka det tredje ordet i meningen.
+        static string TheThirdWord(string sentence)
+        {
+            var split = sentence.Split(' ');
+            string thirdWord = split[2].ToString();
+
+            return thirdWord;
+
         }
     }
 
