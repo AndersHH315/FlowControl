@@ -13,28 +13,28 @@ namespace FlowControl
             do
             {
                 Console.WriteLine("------Main Menu------");
-                Console.WriteLine("Type 1 buy a cinema ticket");
-                Console.WriteLine("Type 0 to exit the program");
+                Console.WriteLine("Skriv 1 för att köpa en biobiljett");
+                Console.WriteLine("Skriv 0 för att stänga ner");
                 input = Console.ReadLine();
 
                 switch (input)
                 {
                     case "0":
-                        Console.WriteLine("The program will close now!");
+                        Console.WriteLine("Programmet kommer att stängas ner!");
                         break;
                     case "1":
-                        Console.WriteLine("How old are you?");
+                        Console.WriteLine("Hur gammal är du?");
                         age = Console.ReadLine();
                         while (int.TryParse(age, out int check) == false)
                         {   
-                            Console.WriteLine("Type your age in numbers!");    
+                            Console.WriteLine("Skriv din ålder i siffror!");    
                             age = Console.ReadLine();
                         }
                         int result = int.Parse(age);
                         Console.WriteLine(checkAge(result));
                         break;
                     default:
-                        Console.WriteLine("Wrong input!");
+                        Console.WriteLine("Fel input!");
                         break;
                 }
                 
