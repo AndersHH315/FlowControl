@@ -44,7 +44,7 @@ namespace FlowControl
                         Console.WriteLine(Receipt(age));
                         break;
                     case "2":
-                        Console.WriteLine("Ange antalet biljetter");
+                        Console.WriteLine("Ange antalet biljetter: ");
                         amount = Console.ReadLine();
                         while (int.TryParse(amount, out int check) == false)
                         {   
@@ -55,7 +55,7 @@ namespace FlowControl
                         Console.WriteLine(Receipt(result));
                         break;
                     case "3":
-                        Console.WriteLine("Skriv något här och se vad som händer!");
+                        Console.WriteLine("Skriv något här och se vad som händer: ");
                         input = Console.ReadLine();
                         Console.WriteLine(RepeatTenTimes(input));
                         break;
@@ -64,7 +64,7 @@ namespace FlowControl
                         input = Console.ReadLine();
                         while (input.Split(' ').Count() !<= 2)
                         {
-                            Console.WriteLine("Meningen måste innehålla minst 3 ord");
+                            Console.WriteLine("Meningen måste innehålla minst 3 ord: ");
                             input = Console.ReadLine();
                         }
                         Console.WriteLine(TheThirdWord(input));
@@ -130,7 +130,12 @@ namespace FlowControl
         static string Receipt(string age)
         {
             int checkType = CheckAge(age);
-            if(youth != 0)
+            if(child != 0)
+            {
+                child = 0;
+                return $"Barn under 5 går gratis!";
+            }
+            else if(youth != 0)
             {
                 youth = 0;
                 return $"Ungdomspris: {checkType}kr";
@@ -145,9 +150,14 @@ namespace FlowControl
                 pensioner = 0;
                 return $"Pensionärspris: {checkType}kr";
             }
+            else if(pensionerOverHundred != 0)
+            {
+                pensionerOverHundred = 0;
+                return $"Pensionärer över 100 går gratis!";
+            }
             else
             {
-                return "Inget köp gjort";          
+                return "Inget köp gjort";
             }
         }
         //Skriver ut ett kvitto på ett fler köp
@@ -193,6 +203,10 @@ namespace FlowControl
                     else
                         totalPersons += $"{pensionerOverHundred}: Pensionärer över 100\n";
                     pensionerOverHundred = 0;
+                }
+                else if(child == 0 && youth == 0 && middleage == 0 && pensioner == 0 && pensionerOverHundred == 0)
+                {
+                    return $"Antal personer: \n{totalPersons}Totalsumma: {sum}kr";
                 }
             }
             return $"Antal personer: \n{totalPersons}Totalsumma: {sum}kr";
