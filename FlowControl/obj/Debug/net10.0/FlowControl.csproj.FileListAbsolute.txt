@@ -1,0 +1,15 @@
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\bin\Debug\net10.0\FlowControl.exe
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\bin\Debug\net10.0\FlowControl.deps.json
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\bin\Debug\net10.0\FlowControl.runtimeconfig.json
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\bin\Debug\net10.0\FlowControl.dll
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\bin\Debug\net10.0\FlowControl.pdb
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\FlowControl.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\FlowControl.AssemblyInfoInputs.cache
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\FlowControl.AssemblyInfo.cs
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\FlowControl.csproj.CoreCompileInputs.cache
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\FlowControl.sourcelink.json
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\FlowControl.dll
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\refint\FlowControl.dll
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\FlowControl.pdb
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\FlowControl.genruntimeconfig.cache
+C:\Users\Ander\Github\C#-Projects\FlowControl\FlowControl\obj\Debug\net10.0\ref\FlowControl.dll

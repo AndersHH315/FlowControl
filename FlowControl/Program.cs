@@ -1,13 +1,12 @@
-﻿
-using System.Formats.Asn1;
-using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Linq;
 
 namespace FlowControl
 {
     class Program
     {    
         //Globara variablar som används för ålder och vilken ålder
-        static string age = "";
+        static string? age = "";
         static int child = 0;
         static int youth = 0;
         static int middleage = 0;
@@ -156,7 +155,7 @@ namespace FlowControl
         {
             int sum = AmountOfTickets(amount);
             string totalPersons = "";
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < amount; i++)
             {
                 if(child != 0)
                 {
