@@ -1,4 +1,5 @@
 ﻿
+using System.Formats.Asn1;
 using System.Security.Cryptography.X509Certificates;
 
 namespace FlowControl
@@ -7,9 +8,11 @@ namespace FlowControl
     {    
         //Globara variablar som används för ålder och vilken ålder
         static string age = "";
+        static int child = 0;
         static int youth = 0;
         static int middleage = 0;
         static int pensioner = 0;
+        static int pensionerOverHundred = 0;
         static void Main(string[] args)
         {
             //Variablar som hanterar inputs för de olika metoderna i switch case satsen
@@ -74,17 +77,26 @@ namespace FlowControl
                 
             } while (input != "0");
 
-
         }
         //Metod som kollar priset beroende på ålder
         //Samt adderar till youth/pensioner/middleage för att sedan kunna skriva ut det på ett kvitto
         static int CheckAge(string age)
         {
             int check = int.Parse(age);
-            if(check < 20)
+            if(check < 5)
+            {
+                child++;
+                return 0;
+            }
+            else if(check < 20)
             {
                 youth++;
                 return 80;                      
+            }
+            else if(check > 100)
+            {
+                pensionerOverHundred++;
+                return 0;
             }
             else if(check > 64)
             {
@@ -146,7 +158,12 @@ namespace FlowControl
             string totalPersons = "";
             for (int i = 0; i < 3; i++)
             {
-                if(youth != 0)
+                if(child != 0)
+                {
+                    totalPersons += $"{child}: Barn\n";
+                    child = 0;
+                }
+                else if(youth != 0)
                 {
                     if(youth < 2)
                         totalPersons += $"{youth}: Ungdom\n";
@@ -170,6 +187,14 @@ namespace FlowControl
                         totalPersons += $"{pensioner}: Pensionärer\n";
                     pensioner = 0;
                 }
+                else if(pensionerOverHundred != 0)
+                {
+                    if(pensionerOverHundred < 2)
+                        totalPersons += $"{pensionerOverHundred}: Pensionär över 100\n";
+                    else
+                        totalPersons += $"{pensionerOverHundred}: Pensionärer över 100\n";
+                    pensionerOverHundred = 0;
+                }
             }
             return $"Antal personer: \n{totalPersons}Totalsumma: {sum}kr";
 
@@ -177,7 +202,7 @@ namespace FlowControl
         //Repeterar en mening tio gånger
         static string RepeatTenTimes(string repeat)
         {
-            string sum = "";
+            string sum = ""; 
             for (int i = 1; i < 11; i++)
             {
                 sum += $"{i}." + repeat + " ";
